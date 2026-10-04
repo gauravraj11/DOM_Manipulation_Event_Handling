@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #fafafa;
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.insta-card {
+    width: 320px;
+    background: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.insta-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+}
+
+.insta-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.insta-username {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.insta-post-image {
+    height: 320px;
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+}
+
+.insta-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 12px 0 12px;
+}
+
+.icon {
+    font-size: 26px;
+    cursor: pointer;
+    user-select: none;
+    color: #262626;
+    transition: transform 0.15s ease;
+}
+
+.icon.heart.liked {
+    color: #ed4956;
+}
+
+.icon:active {
+    transform: scale(1.2);
+}
+
+.likes-count {
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 12px 4px 12px;
+}
+
+.caption {
+    font-size: 14px;
+    padding: 0 12px 14px 12px;
+    color: #262626;
+}
+
+.caption b {
+    margin-right: 4px;
+}

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PBL Begins — Software-Led Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B2A4A;
+    --navy-deep:#081D33;
+    --green:#4C8C2B;
+    --orange:#E8792C;
+    --cyan:#12C7B4;
+    --paper:#F7F7F3;
+    --ink:#14202B;
+    --hw-grey:#7A8794;
+    --hw-fill:#EEF1F3;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:#DCE3E0;
+    display:flex;
+    justify-content:center;
+    padding:32px 12px;
+    font-family:'Inter',sans-serif;
+  }
+  .poster{
+    width:1000px;
+    max-width:100%;
+    background:var(--paper);
+    position:relative;
+    overflow:hidden;
+    border:1px solid #cfd6d2;
+    box-shadow:0 20px 60px rgba(0,0,0,0.18);
+  }
+
+  /* ===== HEADER ===== */
+  .header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:34px 46px 18px 46px;
+    gap:24px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+  .brand-mark{width:56px; height:56px; flex-shrink:0;}
+  .brand-text .uname{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:12.5px;
+    letter-spacing:0.3px;
+    color:var(--navy);
+    line-height:1.25;
+    max-width:190px;
+  }
+  .brand-text .jklu{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:26px;
+    color:var(--navy-deep);
+    letter-spacing:1px;
+    margin-top:2px;
+  }
+  .brand-text .accred{
+    font-size:10.5px;
+    color:#5a6672;
+    margin-top:2px;
+  }
+  .divider-v{width:1px; height:60px; background:#c7cdc9;}
+  .tagline{
+    text-align:right;
+  }
+  .tagline .line1{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:600;
+    font-size:17px;
+    color:var(--navy);
+  }
+  .tagline .line1 .g{color:var(--green);}
+  .tagline .line1 .o{color:var(--orange);}
+  .tagline .underline{
+    height:3px; width:180px; background:linear-gradient(90deg,var(--green),var(--cyan));
+    margin:6px 0 8px auto; border-radius:2px;
+  }
+  .pbl-ribbon{
+    display:inline-block;
+    background:var(--navy-deep);
+    color:#fff;
+    font-family:'JetBrains Mono', monospace;
+    font-weight:600;
+    font-size:12.5px;
+    letter-spacing:1.5px;
+    padding:8px 16px;
+  }
+
+  /* ===== HERO TITLE ===== */
+  .hero-title{
+    padding:6px 46px 0 46px;
+    position:relative;
+  }
+  .hero-title h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:104px;
+    line-height:0.92;
+    color:var(--navy-deep);
+    letter-spacing:-2px;
+  }
+  .hero-title .begins{
+    font-family:'Space Grotesk', sans-serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:64px;
+    color:var(--green);
+    display:block;
+    margin-top:-6px;
+    letter-spacing:-1px;
+  }
+  .subline{
+    font-family:'JetBrains Mono', monospace;
+    font-size:15.5px;
+    color:var(--ink);
+    margin-top:14px;
+    line-height:1.7;
+  }
+  .subline strong{color:var(--orange); font-weight:600;}
+
+  .date-box{
+    margin-top:20px;
+    display:inline-flex;
+    align-items:center;
+    gap:14px;
+    background:var(--navy-deep);
+    color:#fff;
+    padding:14px 22px;
+    border-radius:2px;
+  }
+  .date-box .cal{width:34px; height:34px; flex-shrink:0;}
+  .date-box .txt{font-family:'Inter',sans-serif; font-size:13px; line-height:1.5;}
+  .date-box .txt b{
+    color:#D7E86B; font-size:16px; display:block; font-family:'Space Grotesk',sans-serif;
+  }
+
+  /* ===== DIAGRAM ===== */
+  .diagram-wrap{
+    margin-top:8px;
+    position:relative;
+  }
+  .diagram-wrap svg{display:block; width:100%; height:auto;}
+
+  /* ===== WHY SECTION ===== */
+  .why{
+    padding:6px 46px 10px 46px;
+  }
+  .why-head{
+    display:flex; align-items:center; gap:14px; margin-bottom:22px;
+  }
+  .why-head .rule{flex:1; height:1px; background:#c7cdc9;}
+  .why-head h2{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:26px;
+    color:var(--navy-deep);
+    white-space:nowrap;
+  }
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:0;
+  }
+  .card{
+    padding:0 14px;
+    border-left:1px solid #d8dcd8;
+    text-align:center;
+  }
+  .card:first-child{border-left:none;}
+  .card .icon-circ{
+    width:64px; height:64px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 12px auto;
+  }
+  .card .icon-circ svg{width:32px; height:32px;}
+  .card h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:14.5px;
+    margin-bottom:8px;
+  }
+  .card p{
+    font-size:12px;
+    color:#495057;
+    line-height:1.5;
+  }
+  .c1 .icon-circ{background:var(--navy-deep);}
+  .c2 .icon-circ{background:var(--cyan);}
+  .c3 .icon-circ{background:var(--orange);}
+  .c4 .icon-circ{background:var(--green);}
+  .c5 .icon-circ{background:#39536E;}
+  .c1 h3{color:var(--navy-deep);}
+  .c2 h3{color:#0E9C8D;}
+  .c3 h3{color:var(--orange);}
+  .c4 h3{color:var(--green);}
+  .c5 h3{color:#39536E;}
+
+  /* ===== STAT BAR ===== */
+  .stats{
+    margin:8px 46px 0 46px;
+    border:1px dashed #b9c4bd;
+    display:flex;
+    align-items:center;
+    padding:16px 20px;
+  }
+  .stats .item{
+    display:flex; align-items:center; gap:12px; flex:1; justify-content:center;
+  }
+  .stats .item svg{width:34px; height:34px; flex-shrink:0;}
+  .stats .item .txt b{
+    display:block; font-family:'Space Grotesk',sans-serif; font-size:16px; color:var(--navy-deep);
+  }
+  .stats .item .txt span{font-size:11.5px; color:#5a6672;}
+  .stats .sep{width:1px; height:44px; background:#c7cdc9;}
+
+  /* ===== FOOTER ===== */
+  .footer{
+    margin-top:26px;
+    background:var(--navy-deep);
+    color:#fff;
+    text-align:center;
+    padding:26px 20px 30px 20px;
+    position:relative;
+    overflow:hidden;
+  }
+  .footer .l1{
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    letter-spacing:1.5px;
+    color:#cfd8e0;
+  }
+  .footer .l2{
+    font-family:'Space Grotesk', sans-serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:34px;
+    color:#B7E36B;
+    margin-top:6px;
+  }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="none" stroke="#0B2A4A" stroke-width="2"/>
+        <path d="M32 14 C 24 22, 24 30, 32 36 C 40 30, 40 22, 32 14 Z" fill="#E8792C"/>
+        <path d="M18 40 Q32 30 46 40 Q32 48 18 40 Z" fill="#12C7B4" opacity="0.85"/>
+      </svg>
+      <div class="brand-text">
+        <div class="uname">JK LAKSHMIPAT UNIVERSITY</div>
+        <div class="jklu">JKLU</div>
+        <div class="accred">NAAC 'A' Grade Accredited</div>
+      </div>
+    </div>
+    <div class="divider-v"></div>
+    <div class="tagline">
+      <div class="line1">if(idea) { <span class="g">build</span>() } <span class="o">else</span> { code() }</div>
+      <div class="underline"></div>
+      <div class="pbl-ribbon">PROJECT-BASED LEARNING</div>
+    </div>
+  </div>
+
+  <!-- HERO TITLE -->
+  <div class="hero-title">
+    <h1>PBL<span class="begins">Begins!</span></h1>
+    <div class="subline">
+      Every motor, sensor and robot on this poster takes its orders from <strong>one place: the code.</strong><br>
+      Real Problems. Real Hardware. <strong>Software Decides.</strong>
+    </div>
+    <div class="date-box">
+      <svg class="cal" viewBox="0 0 34 34">
+        <rect x="3" y="6" width="28" height="24" rx="2" fill="none" stroke="#fff" stroke-width="2"/>
+        <line x1="3" y1="13" x2="31" y2="13" stroke="#fff" stroke-width="2"/>
+        <line x1="9" y1="3" x2="9" y2="9" stroke="#fff" stroke-width="2"/>
+        <line x1="25" y1="3" x2="25" y2="9" stroke="#fff" stroke-width="2"/>
+        <rect x="8" y="17" width="4" height="4" fill="#D7E86B"/>
+        <rect x="15" y="17" width="4" height="4" fill="#fff"/>
+        <rect x="22" y="17" width="4" height="4" fill="#fff"/>
+      </svg>
+      <div class="txt">STARTING FROM<br><b>SEPT 01, 2026 — TOMORROW!</b></div>
+    </div>
+  </div>
+
+  <!-- DIAGRAM: software chip controlling hardware -->
+  <div class="diagram-wrap">
+<svg viewBox="0 0 1000 620" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#12C7B4"/>
+    </marker>
+    <radialGradient id="glow" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#12C7B4" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#12C7B4" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- glow behind chip -->
+  <circle cx="500" cy="150" r="180" fill="url(#glow)"/>
+
+  <!-- control lines from chip to each hardware node, drawn first (under chip) -->
+  <path d="M470,215 C 380,300 250,330 175,410" fill="none" stroke="#12C7B4" stroke-width="3" stroke-dasharray="2 8" marker-end="url(#arrow)"/>
+  <path d="M486,222 C 440,320 380,380 345,470" fill="none" stroke="#12C7B4" stroke-width="3" stroke-dasharray="2 8" marker-end="url(#arrow)"/>
+  <path d="M500,225 C 500,320 500,400 500,485" fill="none" stroke="#12C7B4" stroke-width="3" stroke-dasharray="2 8" marker-end="url(#arrow)"/>
+  <path d="M514,222 C 560,320 620,380 655,470" fill="none" stroke="#12C7B4" stroke-width="3" stroke-dasharray="2 8" marker-end="url(#arrow)"/>
+  <path d="M530,215 C 620,300 750,330 825,410" fill="none" stroke="#12C7B4" stroke-width="3" stroke-dasharray="2 8" marker-end="url(#arrow)"/>
+
+  <!-- floating code particles -->
+  <g font-family="JetBrains Mono, monospace" font-size="15" fill="#0B2A4A" opacity="0.55">
+    <text x="120" y="90">if(){}</text>
+    <text x="760" y="80">01001</text>
+    <text x="815" y="150">while(1)</text>
+    <text x="90" y="200">PWM</text>
+    <text x="640" y="60">GPIO</text>
+    <text x="200" y="60">main()</text>
+  </g>
+
+  <!-- CENTRAL CHIP: "the code" that governs everything -->
+  <g>
+    <rect x="420" y="90" width="160" height="120" rx="10" fill="#0B2A4A" stroke="#12C7B4" stroke-width="3"/>
+    <!-- pins -->
+    <g stroke="#0B2A4A" stroke-width="4">
+      <line x1="440" y1="90" x2="440" y2="72"/>
+      <line x1="465" y1="90" x2="465" y2="72"/>
+      <line x1="500" y1="90" x2="500" y2="72"/>
+      <line x1="535" y1="90" x2="535" y2="72"/>
+      <line x1="560" y1="90" x2="560" y2="72"/>
+      <line x1="440" y1="210" x2="440" y2="228"/>
+      <line x1="465" y1="210" x2="465" y2="228"/>
+      <line x1="500" y1="210" x2="500" y2="228"/>
+      <line x1="535" y1="210" x2="535" y2="228"/>
+      <line x1="560" y1="210" x2="560" y2="228"/>
+    </g>
+    <text x="500" y="165" text-anchor="middle" font-family="JetBrains Mono, monospace" font-weight="700" font-size="40" fill="#12C7B4">&lt;/&gt;</text>
+    <text x="500" y="60" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="17" fill="#0B2A4A">THE CODE DECIDES</text>
+  </g>
+
+  <!-- NODE 1: Robotics arm -->
+  <g transform="translate(175,410)">
+    <circle r="80" fill="#EEF1F3" stroke="#7A8794" stroke-width="2"/>
+    <g stroke="#39536E" stroke-width="5" fill="none" stroke-linecap="round">
+      <line x1="0" y1="30" x2="0" y2="0"/>
+      <line x1="0" y1="0" x2="-28" y2="-18"/>
+      <line x1="-28" y1="-18" x2="-38" y2="-42"/>
+    </g>
+    <circle cx="0" cy="0" r="5" fill="#39536E"/>
+    <circle cx="-28" cy="-18" r="5" fill="#39536E"/>
+    <path d="M-46,-46 l-6,-6 M-30,-52 l-2,-8 M-46,-46 l6,-6" stroke="#39536E" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <text x="0" y="66" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="600" font-size="14" fill="#0B2A4A">Robotics</text>
+  </g>
+
+  <!-- NODE 2: Motor / gear (electrical) -->
+  <g transform="translate(345,470)">
+    <circle r="80" fill="#EEF1F3" stroke="#7A8794" stroke-width="2"/>
+    <g fill="#39536E">
+      <circle r="26" fill="none" stroke="#39536E" stroke-width="5"/>
+      <circle r="8" fill="#39536E"/>
+      <g id="teeth">
+        <rect x="-3" y="-36" width="6" height="12"/>
+        <rect x="-3" y="24" width="6" height="12"/>
+        <rect x="-36" y="-3" width="12" height="6"/>
+        <rect x="24" y="-3" width="12" height="6"/>
+        <rect x="18" y="18" width="10" height="6" transform="rotate(45 18 18)"/>
+        <rect x="-28" y="-28" width="10" height="6" transform="rotate(45 -28 -28)"/>
+        <rect x="18" y="-28" width="10" height="6" transform="rotate(-45 18 -28)"/>
+        <rect x="-28" y="18" width="10" height="6" transform="rotate(-45 -28 18)"/>
+      </g>
+    </g>
+    <text x="0" y="66" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="600" font-size="14" fill="#0B2A4A">Motors &amp; Drives</text>
+  </g>
+
+  <!-- NODE 3: Sensor / eye (electronics) -->
+  <g transform="translate(500,485)">
+    <circle r="80" fill="#EEF1F3" stroke="#7A8794" stroke-width="2"/>
+    <ellipse cx="0" cy="0" rx="34" ry="20" fill="none" stroke="#39536E" stroke-width="5"/>
+    <circle cx="0" cy="0" r="11" fill="#39536E"/>
+    <circle cx="3" cy="-3" r="3" fill="#EEF1F3"/>
+    <line x1="-34" y1="0" x2="-46" y2="0" stroke="#39536E" stroke-width="4"/>
+    <line x1="34" y1="0" x2="46" y2="0" stroke="#39536E" stroke-width="4"/>
+    <text x="0" y="66" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="600" font-size="14" fill="#0B2A4A">Sensors</text>
+  </g>
+
+  <!-- NODE 4: Circuit board (electrical/electronics) -->
+  <g transform="translate(655,470)">
+    <circle r="80" fill="#EEF1F3" stroke="#7A8794" stroke-width="2"/>
+    <rect x="-32" y="-24" width="64" height="48" rx="4" fill="none" stroke="#39536E" stroke-width="5"/>
+    <circle cx="-16" cy="-8" r="4" fill="#39536E"/>
+    <circle cx="10" cy="-8" r="4" fill="#39536E"/>
+    <circle cx="-16" cy="14" r="4" fill="#39536E"/>
+    <circle cx="10" cy="14" r="4" fill="#39536E"/>
+    <path d="M-16,-8 L10,-8 M-16,14 L10,14 M-16,-8 L-16,14" stroke="#39536E" stroke-width="2" fill="none"/>
+    <text x="0" y="66" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="600" font-size="14" fill="#0B2A4A">Circuit Boards</text>
+  </g>
+
+  <!-- NODE 5: Solar panel (energy hardware) -->
+  <g transform="translate(825,410)">
+    <circle r="80" fill="#EEF1F3" stroke="#7A8794" stroke-width="2"/>
+    <g transform="rotate(-18)">
+      <rect x="-36" y="-24" width="72" height="48" rx="2" fill="none" stroke="#39536E" stroke-width="5"/>
+      <line x1="-12" y1="-24" x2="-12" y2="24" stroke="#39536E" stroke-width="3"/>
+      <line x1="12" y1="-24" x2="12" y2="24" stroke="#39536E" stroke-width="3"/>
+      <line x1="-36" y1="0" x2="36" y2="0" stroke="#39536E" stroke-width="3"/>
+    </g>
+    <text x="0" y="66" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="600" font-size="14" fill="#0B2A4A">Power Systems</text>
+  </g>
+
+  <!-- caption strip -->
+  <text x="500" y="600" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13.5" fill="#5a6672">
+    Different hardware. Different disciplines. One controller: your code.
+  </text>
+</svg>
+  </div>
+
+  <!-- WHY SOFTWARE LEADS -->
+  <div class="why">
+    <div class="why-head">
+      <div class="rule"></div>
+      <h2>WHY SOFTWARE LEADS</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="cards">
+      <div class="card c1">
+        <div class="icon-circ">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M8 6 L3 12 L8 18"/><path d="M16 6 L21 12 L16 18"/></svg>
+        </div>
+        <h3>Logic First</h3>
+        <p>Plan the control logic before you power a single wire.</p>
+      </div>
+      <div class="card c2">
+        <div class="icon-circ">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="1"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>
+        </div>
+        <h3>Simulate First</h3>
+        <p>Test behavior in code before you touch a soldering iron.</p>
+      </div>
+      <div class="card c3">
+        <div class="icon-circ">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2 C8 6 8 10 12 13 C16 10 16 6 12 2 Z"/><line x1="12" y1="13" x2="12" y2="20"/><line x1="9" y1="20" x2="15" y2="20"/></svg>
+        </div>
+        <h3>One Mind, Many Machines</h3>
+        <p>Robots, motors, sensors — all driven by the same program.</p>
+      </div>
+      <div class="card c4">
+        <div class="icon-circ">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12 L11 14 L15 9"/></svg>
+        </div>
+        <h3>Debug, Don't Rebuild</h3>
+        <p>Fix a mistake in code in seconds, not by rewiring hardware.</p>
+      </div>
+      <div class="card c5">
+        <div class="icon-circ">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2 L2 8 L12 14 L22 8 Z"/><path d="M2 16 L12 22 L22 16"/></svg>
+        </div>
+        <h3>Firmware Has the Final Say</h3>
+        <p>Hardware only ever does what the program tells it to do.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0B2A4A" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><circle cx="17" cy="9" r="2.4"/><path d="M15 20c0-2.4 2-4 4-4"/></svg>
+      <div class="txt"><b>6 members</b><span>in each team</span></div>
+    </div>
+    <div class="sep"></div>
+    <div class="item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0B2A4A" stroke-width="2"><rect x="3" y="4" width="7" height="7"/><rect x="14" y="4" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      <div class="txt"><b>~10 teams</b><span>per section</span></div>
+    </div>
+    <div class="sep"></div>
+    <div class="item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0B2A4A" stroke-width="2"><path d="M4 20 L10 4 L14 4 L20 20"/><path d="M7 14 L17 14"/></svg>
+      <div class="txt"><b>&lt;/&gt; one controller</b><span>code drives every prototype</span></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="l1">YOUR CODE TODAY, THEIR MACHINE TOMORROW</div>
+    <div class="l2">Let the PBL Journey Begin!</div>
+  </div>
+
+</div>
+</body>
+</html>

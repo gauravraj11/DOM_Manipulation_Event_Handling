@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: background 0.3s ease;
+}
+
+body.dark {
+    background: #121212;
+}
+
+.ride-card {
+    width: 320px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.ride-card.dark {
+    background: #1e1e1e;
+    color: #f1f1f1;
+}
+
+.ride-card.confirmed {
+    border-color: #0b8a3d;
+}
+
+.theme-toggle {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+#themeBtn {
+    background: #222;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.ride-card.dark #themeBtn {
+    background: #f1f1f1;
+    color: #222;
+}
+
+.ride-title {
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+
+.fare {
+    color: #666;
+    margin-bottom: 18px;
+    font-size: 14px;
+}
+
+.ride-card.dark .fare {
+    color: #bbb;
+}
+
+#bookBtn {
+    width: 100%;
+    background: #3d8b40;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#bookBtn:disabled {
+    background: #8fbf90;
+    cursor: not-allowed;
+}
+
+.status {
+    margin-top: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    min-height: 20px;
+    color: #3d8b40;
+}
